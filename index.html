@@ -263,6 +263,86 @@
             border-top: 1px solid rgba(255, 215, 0, 0.3);
         }
 
+        .social-media {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .social-media h4 {
+            color: #FFD700;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 20px;
+            background: linear-gradient(145deg, rgba(255, 215, 0, 0.1), rgba(255, 193, 7, 0.05));
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        .social-link:hover {
+            background: linear-gradient(145deg, #FFD700, #FFC107);
+            color: #1a1a1a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .social-link i {
+            margin-right: 8px;
+            font-size: 1.1em;
+        }
+
+        .coordinates {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #c0c0c0;
+            font-style: italic;
+        }
+
+        .map-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 15px;
+            background: linear-gradient(145deg, rgba(255, 215, 0, 0.1), rgba(255, 193, 7, 0.05));
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .map-link:hover {
+            background: linear-gradient(145deg, #FFD700, #FFC107);
+            color: #1a1a1a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .map-link i {
+            margin-right: 8px;
+            font-size: 1.1em;
+        }
+
         @media (max-width: 480px) {
             .container {
                 padding: 15px;
@@ -287,6 +367,30 @@
                 height: 100%;
                 object-fit: cover;
                 border-radius: 50%;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .social-link {
+                width: 200px;
+                justify-content: center;
+            }
+
+            .coordinates {
+                font-size: 0.8em;
+                line-height: 1.4;
+            }
+
+            .map-link {
+                font-size: 0.8em;
+                padding: 8px 12px;
+                text-align: center;
+                width: 100%;
+                justify-content: center;
             }
         }
 
@@ -441,10 +545,30 @@
             </p>
             <div class="contact-info">
                 <p class="footer-text">
-                    <i class="fas fa-map-marker-alt" style="color: #FFD700; margin-right: 8px;"></i> Votre adresse ici<br>
-                    <i class="fas fa-phone" style="color: #FFD700; margin-right: 8px;"></i> +XX XXX XXX XXX<br>
+                    <i class="fas fa-map-marker-alt" style="color: #FFD700; margin-right: 8px;"></i> Kinshasa, République Démocratique du Congo<br>
+                    <i class="fas fa-phone" style="color: #FFD700; margin-right: 8px;"></i> +243 XXX XXX XXX<br>
                     <i class="fas fa-clock" style="color: #FFD700; margin-right: 8px;"></i> Ouvert tous les jours de 11h à 23h
                 </p>
+                <div class="coordinates">
+                    <a href="https://www.google.com/maps?q=-4.346444,15.265083" target="_blank" class="map-link">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Voir notre localisation sur Google Maps
+                    </a>
+                </div>
+            </div>
+            
+            <div class="social-media">
+                <h4><i class="fas fa-share-alt" style="margin-right: 8px;"></i>Suivez-nous</h4>
+                <div class="social-links">
+                    <a href="https://www.tiktok.com/@kin.chicken.and.s?is_from_webapp=1&sender_device=pc" target="_blank" class="social-link">
+                        <i class="fab fa-tiktok"></i>
+                        TikTok
+                    </a>
+                    <a href="https://www.facebook.com/KinChickenAndSauce/?locale=fr_FR" target="_blank" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                        Facebook
+                    </a>
+                </div>
             </div>
         </div>
     </div>
