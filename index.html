@@ -12,12 +12,40 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #ff6b35, #f7931e, #ffcc02);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1f1f1f 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            color: #333;
+            color: #ffffff;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Effet de particules dorées en arrière-plan */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #FFD700, transparent),
+                radial-gradient(2px 2px at 40px 70px, #FFC107, transparent),
+                radial-gradient(1px 1px at 90px 40px, #FFEB3B, transparent),
+                radial-gradient(1px 1px at 130px 80px, #FFD700, transparent),
+                radial-gradient(2px 2px at 160px 30px, #FFC107, transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: sparkle 20s linear infinite;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        @keyframes sparkle {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-100px); }
         }
 
         .container {
@@ -33,48 +61,93 @@
         .header {
             text-align: center;
             margin-bottom: 40px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
+            background: linear-gradient(145deg, rgba(0, 0, 0, 0.9), rgba(30, 30, 30, 0.95));
+            padding: 40px 30px;
+            border-radius: 25px;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 215, 0, 0.2),
+                inset 0 1px 0 rgba(255, 215, 0, 0.1);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
 
         .logo {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(45deg, #FFD700, #FFC107, #FFEB3B);
             border-radius: 50%;
-            margin: 0 auto 20px;
+            margin: 0 auto 25px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 48px;
-            font-weight: bold;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            border: 4px solid white;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            font-size: 52px;
+            font-weight: 900;
+            color: #1a1a1a;
+            text-shadow: 
+                2px 2px 4px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(255, 215, 0, 0.5);
+            border: 4px solid #1a1a1a;
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.4),
+                0 0 0 3px rgba(255, 215, 0, 0.6),
+                inset 0 2px 10px rgba(255, 255, 255, 0.3);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 
+                0 20px 45px rgba(0, 0, 0, 0.5),
+                0 0 0 3px rgba(255, 215, 0, 0.8),
+                inset 0 2px 10px rgba(255, 255, 255, 0.4);
         }
 
         .restaurant-name {
-            font-size: 2.5em;
-            font-weight: bold;
-            color: #ff6b35;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 2.8em;
+            font-weight: 900;
+            background: linear-gradient(45deg, #FFD700, #FFC107, #FFEB3B);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            text-shadow: none;
+            position: relative;
+            z-index: 1;
         }
 
         .subtitle {
-            font-size: 1.2em;
-            color: #666;
-            margin-bottom: 10px;
+            font-size: 1.3em;
+            color: #FFD700;
+            margin-bottom: 15px;
+            font-weight: 600;
+            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
         }
 
         .welcome-text {
-            font-size: 1em;
-            color: #777;
-            line-height: 1.5;
+            font-size: 1.1em;
+            color: #e0e0e0;
+            line-height: 1.6;
+            font-weight: 300;
         }
 
         .menu-section {
@@ -85,21 +158,24 @@
         }
 
         .menu-button {
-            background: linear-gradient(45deg, #ff6b35, #f7931e);
-            color: white;
-            border: none;
-            padding: 25px 30px;
-            border-radius: 15px;
-            font-size: 1.3em;
-            font-weight: bold;
+            background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+            color: #FFD700;
+            border: 2px solid #FFD700;
+            padding: 30px 35px;
+            border-radius: 20px;
+            font-size: 1.4em;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 215, 0, 0.2);
             position: relative;
             overflow: hidden;
             text-decoration: none;
             display: block;
             text-align: center;
+            backdrop-filter: blur(10px);
         }
 
         .menu-button::before {
@@ -109,8 +185,13 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 215, 0, 0.1), 
+                rgba(255, 215, 0, 0.2), 
+                rgba(255, 215, 0, 0.1), 
+                transparent);
+            transition: left 0.6s ease;
         }
 
         .menu-button:hover::before {
@@ -118,46 +199,65 @@
         }
 
         .menu-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(255, 107, 53, 0.4);
+            transform: translateY(-5px) scale(1.02);
+            background: linear-gradient(145deg, #FFD700, #FFC107);
+            color: #1a1a1a;
+            border-color: #1a1a1a;
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.6),
+                0 0 30px rgba(255, 215, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         .menu-button:active {
-            transform: translateY(-1px);
+            transform: translateY(-2px) scale(1.01);
         }
 
         .menu-button .icon {
-            font-size: 1.5em;
+            font-size: 1.6em;
             margin-right: 15px;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
         }
 
-        .special-menu {
-            background: linear-gradient(45deg, #ff6b35, #ff4757);
+        .special-menu:hover {
+            background: linear-gradient(145deg, #FFD700, #FFA000);
+            border-color: #1a1a1a;
         }
 
-        .family-menu {
-            background: linear-gradient(45deg, #f7931e, #ffcc02);
+        .family-menu:hover {
+            background: linear-gradient(145deg, #FFC107, #FF8F00);
+            border-color: #1a1a1a;
         }
 
         .footer {
             text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
+            margin-top: 50px;
+            padding: 30px;
+            background: linear-gradient(145deg, rgba(0, 0, 0, 0.9), rgba(30, 30, 30, 0.95));
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 215, 0, 0.1);
         }
 
         .footer-text {
-            color: #666;
-            font-size: 0.9em;
-            line-height: 1.6;
+            color: #e0e0e0;
+            font-size: 1em;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .footer-text strong {
+            color: #FFD700;
+            font-weight: 700;
         }
 
         .contact-info {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #ddd;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 215, 0, 0.3);
         }
 
         @media (max-width: 480px) {
@@ -206,68 +306,99 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
         }
 
         .modal-content {
-            background-color: white;
-            margin: 10% auto;
-            padding: 30px;
-            border-radius: 20px;
+            background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 25px;
             width: 90%;
-            max-width: 500px;
+            max-width: 550px;
             position: relative;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 
+                0 25px 60px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 215, 0, 0.3),
+                inset 0 1px 0 rgba(255, 215, 0, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            color: #ffffff;
         }
 
         .close {
-            color: #aaa;
+            color: #FFD700;
             float: right;
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
             cursor: pointer;
             position: absolute;
-            right: 20px;
-            top: 15px;
+            right: 25px;
+            top: 20px;
+            transition: all 0.3s ease;
         }
 
         .close:hover {
-            color: #ff6b35;
+            color: #FFC107;
+            transform: scale(1.2);
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
         }
 
         .modal h2 {
-            color: #ff6b35;
+            background: linear-gradient(45deg, #FFD700, #FFC107);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
+            font-size: 2em;
+            font-weight: 800;
+        }
+
+        .modal p {
+            color: #e0e0e0;
+            line-height: 1.6;
             margin-bottom: 20px;
-            font-size: 1.8em;
         }
 
         .download-section {
-            margin-top: 20px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
+            margin-top: 25px;
+            padding: 25px;
+            background: linear-gradient(145deg, rgba(255, 215, 0, 0.1), rgba(255, 193, 7, 0.05));
+            border-radius: 15px;
             text-align: center;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .download-section h3 {
+            color: #FFD700;
+            margin-bottom: 15px;
+            font-weight: 700;
         }
 
         .download-btn {
-            background: linear-gradient(45deg, #28a745, #20c997);
-            color: white;
+            background: linear-gradient(145deg, #FFD700, #FFC107);
+            color: #1a1a1a;
             border: none;
-            padding: 15px 25px;
-            border-radius: 10px;
+            padding: 18px 30px;
+            border-radius: 12px;
             font-size: 1.1em;
-            font-weight: bold;
+            font-weight: 700;
             cursor: pointer;
             margin: 10px;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-decoration: none;
             display: inline-block;
+            box-shadow: 
+                0 8px 20px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(26, 26, 26, 0.2);
         }
 
         .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+            transform: translateY(-3px) scale(1.05);
+            background: linear-gradient(145deg, #FFC107, #FF8F00);
+            box-shadow: 
+                0 15px 30px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(255, 215, 0, 0.3);
         }
     </style>
 </head>
@@ -294,7 +425,7 @@
 
         <div class="footer">
             <p class="footer-text">
-                <strong>KCS - Keen Chicken & Sauce</strong><br>
+                <strong>KCS - Kin Chicken & Sauce</strong><br>
                 Le meilleur poulet en ville !
             </p>
             <div class="contact-info">
@@ -321,12 +452,14 @@
                 <button class="download-btn" onclick="viewMenu('special')">👁️ Consulter en ligne</button>
             </div>
             
-            <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-radius: 8px; border-left: 4px solid #ffc107;">
-                <strong>🔥 Plats populaires :</strong><br>
+            <div style="margin-top: 25px; padding: 20px; background: linear-gradient(145deg, rgba(255, 215, 0, 0.1), rgba(255, 193, 7, 0.05)); border-radius: 12px; border-left: 4px solid #FFD700;">
+                <strong style="color: #FFD700;">🔥 Plats populaires :</strong><br>
+                <span style="color: #e0e0e0;">
                 • Poulet croustillant signature<br>
                 • Sauce spéciale KCS<br>
                 • Wings épicées<br>
                 • Burgers gourmets
+                </span>
             </div>
         </div>
     </div>
@@ -345,12 +478,14 @@
                 <button class="download-btn" onclick="viewMenu('family')">👁️ Consulter en ligne</button>
             </div>
             
-            <div style="margin-top: 20px; padding: 15px; background: #d1ecf1; border-radius: 8px; border-left: 4px solid #17a2b8;">
-                <strong>👪 Offres famille :</strong><br>
+            <div style="margin-top: 25px; padding: 20px; background: linear-gradient(145deg, rgba(255, 215, 0, 0.1), rgba(255, 193, 7, 0.05)); border-radius: 12px; border-left: 4px solid #FFD700;">
+                <strong style="color: #FFD700;">👪 Offres famille :</strong><br>
+                <span style="color: #e0e0e0;">
                 • Plateaux familiaux (4-6 personnes)<br>
                 • Combos économiques<br>
                 • Menus enfants<br>
                 • Desserts à partager
+                </span>
             </div>
         </div>
     </div>
@@ -383,41 +518,27 @@
             }
         }
 
-        // Fonction pour télécharger les menus (à personnaliser avec vos PDFs)
+        // Fonction pour télécharger les menus
         function downloadMenu(type) {
             if (type === 'special') {
-                // Remplacez par le lien vers votre PDF du menu spécial
                 const link = document.createElement('a');
-                link.href = 'path/to/menu-special.pdf'; // À remplacer par votre fichier
+                link.href = 'menuspecila.pdf'; // Lien vers votre fichier PDF menu spécial
                 link.download = 'KCS-Menu-Special.pdf';
                 link.click();
-                
-                alert('Le téléchargement du menu spécial va commencer. Vous devrez remplacer le lien du PDF dans le code.');
             } else if (type === 'family') {
-                // Remplacez par le lien vers votre PDF du menu famille
                 const link = document.createElement('a');
-                link.href = 'path/to/menu-famille.pdf'; // À remplacer par votre fichier
+                link.href = 'menufamille.pdf'; // Lien vers votre fichier PDF menu famille
                 link.download = 'KCS-Menu-Famille.pdf';
                 link.click();
-                
-                alert('Le téléchargement du menu famille va commencer. Vous devrez remplacer le lien du PDF dans le code.');
             }
         }
 
         // Fonction pour consulter les menus en ligne
         function viewMenu(type) {
             if (type === 'special') {
-                // Option 1: Ouvrir le PDF dans un nouvel onglet
-                window.open('path/to/menu-special.pdf', '_blank');
-                
-                // Option 2: Rediriger vers une page de consultation
-                // window.location.href = 'consultation-menu-special.html';
+                window.open('menuspecila.pdf', '_blank');
             } else if (type === 'family') {
-                // Option 1: Ouvrir le PDF dans un nouvel onglet
-                window.open('path/to/menu-famille.pdf', '_blank');
-                
-                // Option 2: Rediriger vers une page de consultation
-                // window.location.href = 'consultation-menu-famille.html';
+                window.open('menufamille.pdf', '_blank');
             }
         }
 
