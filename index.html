@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KCS - Kin Chicken & Sauce</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -423,12 +424,12 @@
 
         <div class="menu-section">
             <button class="menu-button special-menu" onclick="openMenu('special')">
-                <span class="icon">🍗</span>
+                <i class="fas fa-drumstick-bite icon"></i>
                 Menu Spécial
             </button>
             
             <button class="menu-button family-menu" onclick="openMenu('family')">
-                <span class="icon">👨‍👩‍👧‍👦</span>
+                <i class="fas fa-users icon"></i>
                 Menu Famille
             </button>
         </div>
@@ -440,9 +441,9 @@
             </p>
             <div class="contact-info">
                 <p class="footer-text">
-                    📍 Votre adresse ici<br>
-                    📞 +XX XXX XXX XXX<br>
-                    🕒 Ouvert tous les jours de 11h à 23h
+                    <i class="fas fa-map-marker-alt" style="color: #FFD700; margin-right: 8px;"></i> Votre adresse ici<br>
+                    <i class="fas fa-phone" style="color: #FFD700; margin-right: 8px;"></i> +XX XXX XXX XXX<br>
+                    <i class="fas fa-clock" style="color: #FFD700; margin-right: 8px;"></i> Ouvert tous les jours de 11h à 23h
                 </p>
             </div>
         </div>
@@ -452,18 +453,18 @@
     <div id="specialModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('specialModal')">&times;</span>
-            <h2>🍗 Menu Spécial</h2>
+            <h2><i class="fas fa-drumstick-bite" style="margin-right: 15px;"></i>Menu Spécial</h2>
             <p>Découvrez nos plats signature et nos créations uniques !</p>
             
             <div class="download-section">
                 <h3>Télécharger le menu</h3>
                 <p>Cliquez ci-dessous pour télécharger ou consulter notre menu spécial complet :</p>
-                <a href="#" class="download-btn" onclick="downloadMenu('special')">📄 Télécharger PDF</a>
-                <button class="download-btn" onclick="viewMenu('special')">👁️ Consulter en ligne</button>
+                <a href="#" class="download-btn" onclick="downloadMenu('special')"><i class="fas fa-download" style="margin-right: 8px;"></i>Télécharger PDF</a>
+                <button class="download-btn" onclick="viewMenu('special')"><i class="fas fa-eye" style="margin-right: 8px;"></i>Consulter en ligne</button>
             </div>
             
             <div style="margin-top: 25px; padding: 20px; background: linear-gradient(145deg, rgba(255, 215, 0, 0.1), rgba(255, 193, 7, 0.05)); border-radius: 12px; border-left: 4px solid #FFD700;">
-                <strong style="color: #FFD700;">🔥 Plats populaires :</strong><br>
+                <strong style="color: #FFD700;"><i class="fas fa-fire" style="margin-right: 8px;"></i>Plats populaires :</strong><br>
                 <span style="color: #e0e0e0;">
                 • Poulet croustillant signature<br>
                 • Sauce spéciale KCS<br>
@@ -478,18 +479,18 @@
     <div id="familyModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('familyModal')">&times;</span>
-            <h2>👨‍👩‍👧‍👦 Menu Famille</h2>
+            <h2><i class="fas fa-users" style="margin-right: 15px;"></i>Menu Famille</h2>
             <p>Des portions généreuses pour partager de bons moments en famille !</p>
             
             <div class="download-section">
                 <h3>Télécharger le menu</h3>
                 <p>Cliquez ci-dessous pour télécharger ou consulter notre menu famille complet :</p>
-                <a href="#" class="download-btn" onclick="downloadMenu('family')">📄 Télécharger PDF</a>
-                <button class="download-btn" onclick="viewMenu('family')">👁️ Consulter en ligne</button>
+                <a href="#" class="download-btn" onclick="downloadMenu('family')"><i class="fas fa-download" style="margin-right: 8px;"></i>Télécharger PDF</a>
+                <button class="download-btn" onclick="viewMenu('family')"><i class="fas fa-eye" style="margin-right: 8px;"></i>Consulter en ligne</button>
             </div>
             
             <div style="margin-top: 25px; padding: 20px; background: linear-gradient(145deg, rgba(255, 215, 0, 0.1), rgba(255, 193, 7, 0.05)); border-radius: 12px; border-left: 4px solid #FFD700;">
-                <strong style="color: #FFD700;">👪 Offres famille :</strong><br>
+                <strong style="color: #FFD700;"><i class="fas fa-heart" style="margin-right: 8px;"></i>Offres famille :</strong><br>
                 <span style="color: #e0e0e0;">
                 • Plateaux familiaux (4-6 personnes)<br>
                 • Combos économiques<br>
