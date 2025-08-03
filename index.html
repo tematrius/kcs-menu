@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KCS - Kin Chicken & Sauce</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff6b35, #f7931e, #ffcc02);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            border: 4px solid white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .restaurant-name {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #ff6b35;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .welcome-text {
+            font-size: 1em;
+            color: #777;
+            line-height: 1.5;
+        }
+
+        .menu-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .menu-button {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+            border: none;
+            padding: 25px 30px;
+            border-radius: 15px;
+            font-size: 1.3em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+        .menu-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .menu-button:hover::before {
+            left: 100%;
+        }
+
+        .menu-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 107, 53, 0.4);
+        }
+
+        .menu-button:active {
+            transform: translateY(-1px);
+        }
+
+        .menu-button .icon {
+            font-size: 1.5em;
+            margin-right: 15px;
+        }
+
+        .special-menu {
+            background: linear-gradient(45deg, #ff6b35, #ff4757);
+        }
+
+        .family-menu {
+            background: linear-gradient(45deg, #f7931e, #ffcc02);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-text {
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .contact-info {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .restaurant-name {
+                font-size: 2em;
+            }
+            
+            .menu-button {
+                padding: 20px 25px;
+                font-size: 1.1em;
+            }
+            
+            .logo {
+                width: 100px;
+                height: 100px;
+                font-size: 40px;
+            }
+        }
+
+        /* Animation d'entrée */
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Modal pour les informations */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+
+        .close:hover {
+            color: #ff6b35;
+        }
+
+        .modal h2 {
+            color: #ff6b35;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .download-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .download-btn {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container fade-in">
+        <div class="header">
+            <div class="logo">KCS</div>
+            <h1 class="restaurant-name">Kin Chicken & Sauce</h1>
+            <p class="subtitle">Restaurant de Poulet Délicieux</p>
+            <p class="welcome-text">Bienvenue ! Scannez le QR code pour découvrir nos menus savoureux et passer votre commande facilement.</p>
+        </div>
+
+        <div class="menu-section">
+            <button class="menu-button special-menu" onclick="openMenu('special')">
+                <span class="icon">🍗</span>
+                Menu Spécial
+            </button>
+            
+            <button class="menu-button family-menu" onclick="openMenu('family')">
+                <span class="icon">👨‍👩‍👧‍👦</span>
+                Menu Famille
+            </button>
+        </div>
+
+        <div class="footer">
+            <p class="footer-text">
+                <strong>KCS - Keen Chicken & Sauce</strong><br>
+                Le meilleur poulet en ville !
+            </p>
+            <div class="contact-info">
+                <p class="footer-text">
+                    📍 Votre adresse ici<br>
+                    📞 +XX XXX XXX XXX<br>
+                    🕒 Ouvert tous les jours de 11h à 23h
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour Menu Spécial -->
+    <div id="specialModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('specialModal')">&times;</span>
+            <h2>🍗 Menu Spécial</h2>
+            <p>Découvrez nos plats signature et nos créations uniques !</p>
+            
+            <div class="download-section">
+                <h3>Télécharger le menu</h3>
+                <p>Cliquez ci-dessous pour télécharger ou consulter notre menu spécial complet :</p>
+                <a href="#" class="download-btn" onclick="downloadMenu('special')">📄 Télécharger PDF</a>
+                <button class="download-btn" onclick="viewMenu('special')">👁️ Consulter en ligne</button>
+            </div>
+            
+            <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-radius: 8px; border-left: 4px solid #ffc107;">
+                <strong>🔥 Plats populaires :</strong><br>
+                • Poulet croustillant signature<br>
+                • Sauce spéciale KCS<br>
+                • Wings épicées<br>
+                • Burgers gourmets
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour Menu Famille -->
+    <div id="familyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('familyModal')">&times;</span>
+            <h2>👨‍👩‍👧‍👦 Menu Famille</h2>
+            <p>Des portions généreuses pour partager de bons moments en famille !</p>
+            
+            <div class="download-section">
+                <h3>Télécharger le menu</h3>
+                <p>Cliquez ci-dessous pour télécharger ou consulter notre menu famille complet :</p>
+                <a href="#" class="download-btn" onclick="downloadMenu('family')">📄 Télécharger PDF</a>
+                <button class="download-btn" onclick="viewMenu('family')">👁️ Consulter en ligne</button>
+            </div>
+            
+            <div style="margin-top: 20px; padding: 15px; background: #d1ecf1; border-radius: 8px; border-left: 4px solid #17a2b8;">
+                <strong>👪 Offres famille :</strong><br>
+                • Plateaux familiaux (4-6 personnes)<br>
+                • Combos économiques<br>
+                • Menus enfants<br>
+                • Desserts à partager
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour ouvrir les modals
+        function openMenu(type) {
+            if (type === 'special') {
+                document.getElementById('specialModal').style.display = 'block';
+            } else if (type === 'family') {
+                document.getElementById('familyModal').style.display = 'block';
+            }
+        }
+
+        // Fonction pour fermer les modals
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Fermer les modals en cliquant à l'extérieur
+        window.onclick = function(event) {
+            const specialModal = document.getElementById('specialModal');
+            const familyModal = document.getElementById('familyModal');
+            
+            if (event.target === specialModal) {
+                specialModal.style.display = 'none';
+            }
+            if (event.target === familyModal) {
+                familyModal.style.display = 'none';
+            }
+        }
+
+        // Fonction pour télécharger les menus (à personnaliser avec vos PDFs)
+        function downloadMenu(type) {
+            if (type === 'special') {
+                // Remplacez par le lien vers votre PDF du menu spécial
+                const link = document.createElement('a');
+                link.href = 'path/to/menu-special.pdf'; // À remplacer par votre fichier
+                link.download = 'KCS-Menu-Special.pdf';
+                link.click();
+                
+                alert('Le téléchargement du menu spécial va commencer. Vous devrez remplacer le lien du PDF dans le code.');
+            } else if (type === 'family') {
+                // Remplacez par le lien vers votre PDF du menu famille
+                const link = document.createElement('a');
+                link.href = 'path/to/menu-famille.pdf'; // À remplacer par votre fichier
+                link.download = 'KCS-Menu-Famille.pdf';
+                link.click();
+                
+                alert('Le téléchargement du menu famille va commencer. Vous devrez remplacer le lien du PDF dans le code.');
+            }
+        }
+
+        // Fonction pour consulter les menus en ligne
+        function viewMenu(type) {
+            if (type === 'special') {
+                // Option 1: Ouvrir le PDF dans un nouvel onglet
+                window.open('path/to/menu-special.pdf', '_blank');
+                
+                // Option 2: Rediriger vers une page de consultation
+                // window.location.href = 'consultation-menu-special.html';
+            } else if (type === 'family') {
+                // Option 1: Ouvrir le PDF dans un nouvel onglet
+                window.open('path/to/menu-famille.pdf', '_blank');
+                
+                // Option 2: Rediriger vers une page de consultation
+                // window.location.href = 'consultation-menu-famille.html';
+            }
+        }
+
+        // Animation au chargement
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+    </script>
+</body>
+</html>
