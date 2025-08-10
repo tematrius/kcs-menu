@@ -12,8 +12,14 @@
             box-sizing: border-box;
         }
 
+        /* Force le noir sur tous les navigateurs */
+        html, body {
+            background-color: #1a1a1a !important;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a1a; /* Couleur de fond noir fixe */
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1f1f1f 100%);
             min-height: 100vh;
             display: flex;
@@ -21,6 +27,11 @@
             color: #ffffff;
             position: relative;
             overflow-x: hidden;
+        }
+
+        /* Force le noir sur html aussi pour une compatibilité totale */
+        html {
+            background-color: #1a1a1a;
         }
 
         /* Effet de particules dorées en arrière-plan */
