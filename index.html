@@ -354,6 +354,45 @@
             font-size: 1.1em;
         }
 
+        /* Section carte Google Maps */
+        .map-section {
+            margin-top: 30px;
+            background: linear-gradient(145deg, rgba(0, 0, 0, 0.9), rgba(30, 30, 30, 0.95));
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 215, 0, 0.1);
+        }
+
+        .map-section h3 {
+            color: #FFD700;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 215, 0, 0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(20%) sepia(10%) hue-rotate(35deg) saturate(1.2);
+        }
+
         @media (max-width: 480px) {
             .container {
                 padding: 15px;
@@ -402,6 +441,18 @@
                 text-align: center;
                 width: 100%;
                 justify-content: center;
+            }
+
+            .map-section {
+                padding: 20px;
+            }
+
+            .map-section h3 {
+                font-size: 1.3em;
+            }
+
+            .map-container {
+                height: 250px;
             }
         }
 
@@ -549,6 +600,19 @@
             </button>
         </div>
 
+        <!-- Section carte Google Maps -->
+        <div class="map-section fade-in">
+            <h3><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i>Notre Localisation</h3>
+            <div class="map-container">
+                <iframe 
+                    src="https://maps.google.com/maps?q=-4.346444,15.265083&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+
         <div class="footer">
             <p class="footer-text">
                 <strong>KCS - Kin Chicken & Sauce</strong><br>
@@ -557,7 +621,7 @@
             <div class="contact-info">
                 <p class="footer-text">
                     <i class="fas fa-map-marker-alt" style="color: #FFD700; margin-right: 8px;"></i> Kinshasa, République Démocratique du Congo<br>
-                    <i class="fas fa-phone" style="color: #FFD700; margin-right: 8px;"></i> +243 XXX XXX XXX<br>
+                    <i class="fas fa-phone" style="color: #FFD700; margin-right: 8px;"></i> +243 848 486 424<br>
                     <i class="fas fa-clock" style="color: #FFD700; margin-right: 8px;"></i> Ouvert tous les jours de 11h à 23h
                 </p>
                 <div class="coordinates">
