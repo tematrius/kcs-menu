@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KCS - Kin Chicken & Sauce</title>
-    <meta name="description" content="KCS - Kin Chicken & Sauce, fastfood spécialisé dans le poulet et les sauces. Découvrez nos menus Spécial et Famille à Kinshasa.">
+    <meta name="description" content="KCS - Kin Chicken & Sauce, fastfood spécialisé dans le poulet et les sauces. Découvrez notre menu complet à Kinshasa.">
     <meta property="og:title" content="KCS - Kin Chicken & Sauce">
-    <meta property="og:description" content="KCS - Kin Chicken & Sauce, fastfood spécialisé dans le poulet et les sauces. Découvrez nos menus Spécial et Famille à Kinshasa.">
+    <meta property="og:description" content="KCS - Kin Chicken & Sauce, fastfood spécialisé dans le poulet et les sauces. Découvrez notre menu complet à Kinshasa.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fr_FR">
     <meta name="theme-color" content="#1a1a1a">
@@ -242,12 +242,7 @@
             filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
         }
 
-        .special-menu:hover {
-            background: linear-gradient(145deg, #FFD700, #FFA000);
-            border-color: #1a1a1a;
-        }
-
-        .family-menu:hover {
+        .unique-menu:hover {
             background: linear-gradient(145deg, #FFC107, #FF8F00);
             border-color: #1a1a1a;
         }
@@ -628,14 +623,9 @@
         </div>
 
         <div class="menu-section">
-            <button class="menu-button special-menu" onclick="openMenu('special')">
-                <i class="fas fa-drumstick-bite icon"></i>
-                Menu Spécial
-            </button>
-            
-            <button class="menu-button family-menu" onclick="openMenu('family')">
-                <i class="fas fa-users icon"></i>
-                Menu Famille
+            <button class="menu-button unique-menu" onclick="openMenu()">
+                <i class="fas fa-book-open icon"></i>
+                Menu Complet KCS
             </button>
         </div>
 
@@ -697,53 +687,27 @@
         <img src="favicon.svg" alt="KCS" width="28" height="28" />
     </button>
 
-    <!-- Modal pour Menu Spécial -->
-    <div id="specialModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="specialTitle">
+    <!-- Modal pour Menu Complet -->
+    <div id="menuModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="menuTitle">
         <div class="modal-content">
-            <button class="close" onclick="closeModal('specialModal')" aria-label="Fermer la fenêtre" title="Fermer la fenêtre">&times;</button>
-            <h2 id="specialTitle"><i class="fas fa-drumstick-bite" style="margin-right: 15px;"></i>Menu Spécial</h2>
-            <p>Découvrez nos plats signature et nos créations uniques !</p>
+            <button class="close" onclick="closeModal('menuModal')" aria-label="Fermer la fenêtre" title="Fermer la fenêtre">&times;</button>
+            <h2 id="menuTitle"><i class="fas fa-book-open" style="margin-right: 15px;"></i>Menu Complet KCS</h2>
+            <p>Découvrez toute notre carte KCS dans un seul menu unique.</p>
             
             <div class="download-section">
                 <h3>Télécharger le menu</h3>
-                <p>Cliquez ci-dessous pour télécharger ou consulter notre menu spécial complet :</p>
-                    <a href="KCS%20MENU%20classique%20OCTOBRE%202025.pdf" class="download-btn" download><i class="fas fa-download" style="margin-right: 8px;"></i>Télécharger PDF</a>
-                    <button type="button" class="download-btn" onclick="viewMenu('special')"><i class="fas fa-eye" style="margin-right: 8px;"></i>Consulter en ligne</button>
+                <p>Cliquez ci-dessous pour télécharger ou consulter notre menu complet :</p>
+                    <a href="MENU%20COMPLET%20KCS%201.pdf" class="download-btn" download><i class="fas fa-download" style="margin-right: 8px;"></i>Télécharger PDF</a>
+                    <button type="button" class="download-btn" onclick="viewMenu()"><i class="fas fa-eye" style="margin-right: 8px;"></i>Consulter en ligne</button>
             </div>
             
             <div style="margin-top: 25px; padding: 20px; background: linear-gradient(145deg, rgba(255, 215, 0, 0.1), rgba(255, 193, 7, 0.05)); border-radius: 12px; border-left: 4px solid #FFD700;">
-                <strong style="color: #FFD700;"><i class="fas fa-fire" style="margin-right: 8px;"></i>Plats populaires :</strong><br>
+                <strong style="color: #FFD700;"><i class="fas fa-utensils" style="margin-right: 8px;"></i>Retrouvez dans ce menu :</strong><br>
                 <span style="color: #e0e0e0;">
-                • Poulet croustillant signature<br>
-                • Sauce spéciale KCS<br>
-                • Wings épicées<br>
-                • Burgers gourmets
-                </span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal pour Menu Famille -->
-    <div id="familyModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="familyTitle">
-        <div class="modal-content">
-            <button class="close" onclick="closeModal('familyModal')" aria-label="Fermer la fenêtre" title="Fermer la fenêtre">&times;</button>
-            <h2 id="familyTitle"><i class="fas fa-users" style="margin-right: 15px;"></i>Menu Famille</h2>
-            <p>Des portions généreuses pour partager de bons moments en famille !</p>
-            
-            <div class="download-section">
-                <h3>Télécharger le menu</h3>
-                <p>Cliquez ci-dessous pour télécharger ou consulter notre menu famille complet :</p>
-                    <a href="KCS%20MENU%20COMBO%20OCTOBRE%202025.pdf" class="download-btn" download><i class="fas fa-download" style="margin-right: 8px;"></i>Télécharger PDF</a>
-                    <button type="button" class="download-btn" onclick="viewMenu('family')"><i class="fas fa-eye" style="margin-right: 8px;"></i>Consulter en ligne</button>
-            </div>
-            
-            <div style="margin-top: 25px; padding: 20px; background: linear-gradient(145deg, rgba(255, 215, 0, 0.1), rgba(255, 193, 7, 0.05)); border-radius: 12px; border-left: 4px solid #FFD700;">
-                <strong style="color: #FFD700;"><i class="fas fa-heart" style="margin-right: 8px;"></i>Offres famille :</strong><br>
-                <span style="color: #e0e0e0;">
-                • Plateaux familiaux (4-6 personnes)<br>
-                • Combos économiques<br>
-                • Menus enfants<br>
-                • Desserts à partager
+                • Menus individuels<br>
+                • Menus combos<br>
+                • Menus à partager<br>
+                • Boissons et accompagnements
                 </span>
             </div>
         </div>
@@ -774,9 +738,8 @@
                 lastFocused = null;
             }
 
-            window.openMenu = function(type) {
-                const id = type === 'special' ? 'specialModal' : 'familyModal';
-                showModal(document.getElementById(id));
+            window.openMenu = function() {
+                showModal(document.getElementById('menuModal'));
             };
 
             window.closeModal = function(modalId) {
@@ -821,26 +784,19 @@
 
         // Safe download/view using encoded file names
         (function() {
-            const FILES = {
-                special: 'KCS%20MENU%20classique%20OCTOBRE%202025.pdf',
-                family: 'KCS%20MENU%20COMBO%20OCTOBRE%202025.pdf'
-            };
+            const MENU_FILE = 'MENU%20COMPLET%20KCS%201.pdf';
 
-            window.downloadMenu = function(type) {
-                const href = FILES[type];
-                if (!href) return;
+            window.downloadMenu = function() {
                 const a = document.createElement('a');
-                a.href = href;
-                a.download = type === 'special' ? 'KCS-Menu-Special.pdf' : 'KCS-Menu-Famille.pdf';
+                a.href = MENU_FILE;
+                a.download = 'KCS-Menu-Complet.pdf';
                 document.body.appendChild(a);
                 a.click();
                 a.remove();
             };
 
-            window.viewMenu = function(type) {
-                const href = FILES[type];
-                if (!href) return;
-                window.open(href, '_blank', 'noopener');
+            window.viewMenu = function() {
+                window.open(MENU_FILE, '_blank', 'noopener');
             };
         })();
 

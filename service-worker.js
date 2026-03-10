@@ -1,9 +1,8 @@
-const CACHE_NAME = 'kcs-cache-v1';
+const CACHE_NAME = 'kcs-cache-v2';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
-  '/KCS%20MENU%20classique%20OCTOBRE%202025.pdf',
-  '/KCS%20MENU%20COMBO%20OCTOBRE%202025.pdf',
+  '/MENU%20COMPLET%20KCS%201.pdf',
   '/favicon.ico'
 ];
 
